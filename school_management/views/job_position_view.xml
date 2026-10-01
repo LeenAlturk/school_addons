@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="job_position_view_view_form" model="ir.ui.view">
+        <field name="name">job.position.view.view.form</field>
+        <field name="model">school.job.position</field>
+        <field name="arch" type="xml">
+            <form string="Job_position_view">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="department"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- List View -->
+    <record id="job_position_view_view_list" model="ir.ui.view">
+        <field name="name">job.position.view.view.list</field>
+        <field name="model">school.job.position</field>
+        <field name="arch" type="xml">
+            <list string="Job_position_view">
+                 <field name="name"/>
+                 <field name="department"/>
+            </list>
+        </field>
+    </record>
+      <record id="school_department_view_search" model="ir.ui.view">
+    <field name="name">school.department.view.search</field>
+    <field name="model">school.job.position</field>
+    <field name="arch" type="xml">
+        <search string="Search job position">
+
+            <!-- Search Fields -->
+            <field name="name"/>
+            <field name="department"/>
+
+            <!-- Group By -->
+            <group expand="0" string="Group By">
+                <filter string="Department"
+                        name="group_department"
+                        context="{'group_by':'department'}"/>
+            </group>
+
+        </search>
+    </field>
+</record>
+    <!-- Action -->
+    <record id="job_position_view_action" model="ir.actions.act_window">
+        <field name="name">Job position view</field>
+        <field name="res_model">school.job.position</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first job position view!
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menu -->
+    <menuitem id="job_position_view_menu"
+              name="Job position"
+              parent = "configration_root_menu"
+              action="job_position_view_action"
+              sequence="1"/>
+</odoo>

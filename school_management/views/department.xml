@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="department_view_form" model="ir.ui.view">
+        <field name="name">department.view.form</field>
+        <field name="model">school.department</field>
+        <field name="arch" type="xml">
+            <form string="Department">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="manager"/>
+                        <field name="code"/>
+                        <field name="active"/>
+                        <!-- Add your fields here -->
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- List View -->
+    <record id="department_view_list" model="ir.ui.view">
+        <field name="name">department.view.list</field>
+        <field name="model">school.department</field>
+        <field name="arch" type="xml">
+            <list string="Department">
+                <field name="name"/>
+                <field name="manager"/>
+                <field name="code"/>
+                <field name="active"/>
+            </list>
+        </field>
+    </record>
+    
+    <!-- Action -->
+    <record id="department_action" model="ir.actions.act_window">
+        <field name="name">Department</field>
+        <field name="res_model">school.department</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first department!
+            </p>
+        </field>
+    </record>
+
+
+    <record id="school_department_view_search" model="ir.ui.view">
+    <field name="name">school.department.view.search</field>
+    <field name="model">school.department</field>
+    <field name="arch" type="xml">
+        <search string="Search Department">
+
+            <!-- Search Fields -->
+            <field name="name"/>
+            <field name="code"/>
+            <field name="manager"/>
+
+            <!-- Filters -->
+            <filter string="Active"
+                    name="active"
+                    domain="[('active', '=', True)]"/>
+
+            <filter string="Inactive"
+                    name="inactive"
+                    domain="[('active', '=', False)]"/>
+
+            <!-- Group By -->
+            <group expand="0" string="Group By">
+                <filter string="Manager"
+                        name="group_manager"
+                        context="{'group_by':'manager'}"/>
+            </group>
+
+        </search>
+    </field>
+</record>
+    <!--   root name -->
+     <menuitem
+        id="configration_root_menu"
+        name="Configration"
+        parent="school_root_menu"
+        sequence="10"/>
+
+    <!-- Menu -->
+    <menuitem id="department"
+              name="Department"
+              parent = "configration_root_menu"
+              action="department_action"
+              sequence="0"/>
+</odoo>

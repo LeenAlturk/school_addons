@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="staff_view_form" model="ir.ui.view">
+        <field name="name">staff.view.form</field>
+        <field name="model">staff</field>
+        <field name="arch" type="xml">
+            <form string="Staff">
+                <sheet>
+                           <!-- Header -->
+                <div class="oe_title">
+                    <h1>
+                        <field name="Full_Name" readonly="1" placeholder="Staff Name"/>
+                    </h1>
+                    <field name="image"
+                           widget="image"
+                           class="oe_avatar"
+                           nolabel="1"
+                           options="{'size':[180,180]}"/>
+                </div>
+                    <group>
+                         <group string="Personal Info">
+                        <field name="First_Name"/>
+                        <field name="Last_Name"/>
+                        <field name="Gender"/>
+                        <field name="date_of_birth"/>
+                        <field name="age"/>
+                        <field name="National_ID"/>
+                    </group>
+                    <group string="Contact Information">
+                         <field name="phone"/>
+                        <field name="Email"/>
+                        <field name="Mobil"/>
+                     </group>
+                    </group>
+                   <notebook>
+                       <page string="Employment Info">
+                         <group >
+                         <field name="Staff_Number" readonly="True"/>
+                        <field name="staff_type"/>
+                        <field name="hire_Date"/>
+                        <field name="staff_status"/>
+                        <field name="department"/>
+                         </group>
+                       </page>
+                       <page string="Other info">
+                            <group string="">
+                                 <field name="note"/>
+                            </group>
+                       </page>
+                   </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- List View -->
+    <record id="staff_view_list" model="ir.ui.view">
+        <field name="name">staff.view.list</field>
+        <field name="model">staff</field>
+        <field name="arch" type="xml">
+            <list string="Staff">
+                    <field name="Staff_Number"/>
+                      <field name="Full_Name"/>
+                        <field name="Gender"/>
+                        <field name="date_of_birth"/>
+                        <field name="age"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="staff_view_search" model="ir.ui.view">
+        <field name="name">staff.view.search</field>
+        <field name="model">staff</field>
+        <field name="arch" type="xml">
+            <search string="Search Title">
+                 <field name="Staff_Number"/>
+                      <field name="Full_Name"/>
+                        <field name="Gender"/>
+                        <field name="date_of_birth"/>
+                        <field name="age"/>
+            </search>
+        </field>
+    </record>
+
+     <!-- Action -->
+    <record id="staff_action" model="ir.actions.act_window">
+        <field name="name">Staff</field>
+        <field name="res_model">staff</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first staff!
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="staff_menu"
+              parent="school_root_menu"
+              name="Staff"
+              action="staff_action"
+              sequence="2"/>
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Form View -->
+    <record id="time_table_view_form" model="ir.ui.view">
+        <field name="name">time.table.view.form</field>
+        <field name="model">school.time.table</field>
+        <field name="arch" type="xml">
+            <form string="Time_table">
+                <sheet>
+                    <group>
+                        <field name="class_time_table"/>
+                        <field name="section_class_section"/>
+                        <field name="academic_year_id"/>
+                        <field name="active"/>
+                    </group>
+                    <notebook>
+                        <page string="table">
+                            <field name="time_table_line_id" string="Tabel of time">
+                                <list editable="bottom">
+                                <field name="day_session"/>
+                                <field name="period"/>
+                                <field name="subject"/>
+                                <field name="teacher"/>
+                                </list>
+                            </field>
+
+
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- List View -->
+    <record id="time_table_view_list" model="ir.ui.view">
+        <field name="name">time.table.view.list</field>
+        <field name="model">school.time.table</field>
+        <field name="arch" type="xml">
+            <list string="Time_table">
+                        <field name="class_time_table"/>
+                        <field name="academic_year_id"/>
+                        <field name="active"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="time_table_view_search" model="ir.ui.view">
+        <field name="name">time.table.view.search</field>
+        <field name="model">school.time.table</field>
+        <field name="arch" type="xml">
+            <search string="Search Timetable">
+                    <field name="class_time_table"/>
+                    <field name="academic_year_id"/>
+            </search>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="time_table_action" model="ir.actions.act_window">
+        <field name="name">Time table</field>
+        <field name="res_model">school.time.table</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first timetable!
+            </p>
+        </field>
+    </record>
+    
+    <!-- Menu -->
+    <menuitem id="time_table_menu"
+              name="Time table"
+              action="time_table_action"
+              parent = "configration_root_menu"
+              sequence="11"/>
+</odoo>
